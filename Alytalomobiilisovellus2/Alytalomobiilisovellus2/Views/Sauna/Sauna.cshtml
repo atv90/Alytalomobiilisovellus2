@@ -5,3 +5,44 @@
 
 <h2>Sauna</h2>
 
+@*saunan tilan listaaminen tietokannasta*@
+@*JavaScriptillä JSON-kutsu palvelimelle*@
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            $.getJSON("/Sauna/SaunanTila", null, function (json) {
+                var saunanTila = JSON.parse(json);
+                //alert("saunan tila: " + saunanTila.length);
+
+                var html = "";
+
+                for (var index = 0; index < saunanTila.length; index++) {
+                    //alert("lämpötilatila on: " + saunanTila[index].SaunanLampotila);
+                    html +=
+                        "<tr>" +
+                        "<td></td>" +
+                        "<td>" + saunanTila[index].SaunanTila + "</td>" +
+                        "<td>" + saunanTila[index].SaunanLampotila + "</td>" +
+                        "</tr>\r\n";
+                    //    "<ul class='list-group' style='width: auto'>" +
+                    //"<input class='list-group-item' value=" + saunanTila[index].SaunanTila + saunanTila[index].SaunanLampotila + "/>" +
+                    //    "</ul>"
+                }
+                //viittaus id="saunaTaulukko" ja tbody-osioon taulukossa(eli mihin data sijoitetaan)
+                $('#saunaTaulukko tbody').html(html);
+            });
+        });
+    </script>
+}
+@*taulukon sarakeotsikot*@
+<table class="table table-striped" id="saunaTaulukko">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Saunan tila</th>
+            <th>Saunan lämpötila</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
