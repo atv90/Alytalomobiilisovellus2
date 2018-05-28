@@ -5,4 +5,39 @@
 
 <h2>Valaistus</h2>
 
-<p>valaistus asiaa</p>
+@*valaistuksen tilan listaaminen tietokannasta*@
+@*JavaScriptillä JSON-kutsu palvelimelle*@
+
+@section scripts {
+
+    <script type="text/javascript">
+        $(function () {
+            $.getJSON("/Valaistus/ValaistusTila", null, function (json) {
+                var valaistusTila = JSON.parse(json);
+
+                var html = "";
+
+                for (var index = 0; index < valaistusTila.length; index++) {
+                    html +=
+                        "<tr>" +
+                        "<td></td>" +
+                    "<td>" + valaistusTila[index].ValaistusTila + "</td>" +
+                    "<td>" + valaistusTila[index].ValaistusMaara + "</td>" +
+                        "</tr>\r\n";
+                }
+                $('#valaistusTaulukko tbody').html(html);
+            });
+        });
+    </script>
+}
+@*taulukon sarakeotsikot*@
+<table class="table table-striped" id="valaistusTaulukko">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Valaistuksen tila</th>
+            <th>Valaistuksen määrä</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>

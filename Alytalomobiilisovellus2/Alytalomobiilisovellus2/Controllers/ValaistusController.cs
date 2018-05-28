@@ -22,7 +22,7 @@ namespace Alytalomobiilisovellus2.Controllers
                          select new
                          {
                              ValaistusTila = v.ValoTila,
-                             ValaistusMaara = v.ValoTila
+                             ValaistusMaara = v.ValoMaara
                          }).ToList();
 
             string vtilajson = JsonConvert.SerializeObject(vtila);
