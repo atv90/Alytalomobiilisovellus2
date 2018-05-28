@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MobiiliAlytalo.Views
+namespace Alytalomobiilisovellus2.Controllers
 {
     public class SaunaController : Controller
     {
