@@ -153,6 +153,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LampotilaController.cs" />
     <Compile Include="Controllers\SaunaController.cs" />
+    <Compile Include="Models\SaunaData.cs" />
     <Compile Include="Controllers\ValaistusController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
