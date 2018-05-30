@@ -15,6 +15,7 @@ namespace Alytalomobiilisovellus2.Controllers
         {
             return View();
         }
+       
         public JsonResult ValaistusTila()
         {
             AlyTaloEntities entities = new AlyTaloEntities();
