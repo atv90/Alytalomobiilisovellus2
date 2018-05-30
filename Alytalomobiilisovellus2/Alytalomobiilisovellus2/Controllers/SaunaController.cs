@@ -73,6 +73,29 @@ namespace Alytalomobiilisovellus2.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Sauna");
-        } 
+        }
+        public ActionResult Update(Sauna sauna)
+        {
+            AlyTaloEntities entities = new AlyTaloEntities();
+
+            int id = sauna.SaunaID;
+            bool OK = false;
+
+            Sauna dbItem = (from s in entities.Sauna
+                            where s.SaunaID == id
+                            select s).FirstOrDefault();
+            //kopioidaan selaimelta saadut tiedot tietokantaan, jos kentän arvo ei ole nolla
+            if (dbItem != null)
+            {
+                dbItem.SaunaID = sauna.SaunaID;
+                dbItem.SaunaTila = sauna.SaunaTila;
+                dbItem.SaunaNykyLampotila = sauna.SaunaNykyLampotila;
+
+                entities.SaveChanges();
+                OK = true;
+            }
+            entities.Dispose();
+            return Json(OK, JsonRequestBehavior.AllowGet);
+        }
     }
 }

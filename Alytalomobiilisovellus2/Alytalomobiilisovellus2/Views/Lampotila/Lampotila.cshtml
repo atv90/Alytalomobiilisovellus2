@@ -5,3 +5,39 @@
 
 <h2>Lämpötila</h2>
 
+@*lämpötilan tilan listaaminen tietokannasta*@
+@*JavaScriptillä JSON-kutsu palvelimelle*@
+
+@section scripts {
+
+    <script type="text/javascript">
+        $(function () {
+            $.getJSON("/Lampotila/LampotilaTila", null, function (json) {
+                var lampotilaTila = JSON.parse(json);
+
+                var html = "";
+
+                for (var index = 0; index < lampotilaTila.length; index++) {
+                    html +=
+                        "<tr>" +
+                        "<td></td>" +
+                    "<td>" + lampotilaTila[index].TavoiteLampotila + "</td>" +
+                    "<td>" + lampotilaTila[index].NykyLampotila + "</td>" +
+                        "</tr>\r\n";
+                }
+                $('#lampotilaTaulukko tbody').html(html);
+            });
+        });
+    </script>
+}
+@*taulukon sarakeotsikot*@
+<table class="table table-striped" id="lampotilaTaulukko">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Tavoitelämpötila</th>
+            <th>Nykyinen lämpötila</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>

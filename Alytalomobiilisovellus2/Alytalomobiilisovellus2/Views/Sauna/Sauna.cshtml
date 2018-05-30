@@ -34,12 +34,37 @@
 
                 //saunan tietojen muokkaus
                 $("#muokkaa").click(function () {
-                    var sauna = JSON.parse(json2);
 
+                    var sauna = JSON.parse(json2);
+                    //tietojen kopiointi modaali-ikkunaan
                     $("#SaunanTila").val(sauna.SaunanTila);
                     $("#SaunanLampotila").val(sauna.SaunanLampotila)
                 });
             });
+        });
+
+        //sivun alustaminen, mitä tehdään kun sivusto aukeaa
+        $(function () {
+            päivitäSaunalistaus();
+
+           $("#saunaModalTallenna").click(function () {
+                // luetaan käyttäjän syöttämät kentät
+                var details = {
+                    SaunanTila: $("#SaunanTila").val(),
+                    SaunanLampotila: $("#SaunanLampotila").val(),
+                };
+                //tietojen päivitys ja uusien tietojen lisäys
+                $.post("/Sauna/update/", details, function (status) {
+                    if (status == true) {
+                        alert("Uudet tiedot tallennettu!");
+                        $("#myModal").modal("hide");
+                        päivitäSaunalistaus();
+                    }
+                    else {
+                        alert("Tallennus ei onnistunut, kokeile uudestaan.");
+                    }
+                });
+           });
         });
     </script>
 }
@@ -89,7 +114,7 @@
                         data-dismiss="modal">
                     Sulje
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" id="saunaModalTallenna">
                     Tallenna muutokset
                 </button>
 

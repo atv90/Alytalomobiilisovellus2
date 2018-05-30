@@ -6,7 +6,7 @@
         {
         }
 
-        public int? SaunaNykyLampotila { get; internal set; }
-        public string SaunaTila { get; internal set; }
+        public int? SaunaNykyLampotila { get; set; }
+        public string SaunaTila { get; set; }
     }
 }
