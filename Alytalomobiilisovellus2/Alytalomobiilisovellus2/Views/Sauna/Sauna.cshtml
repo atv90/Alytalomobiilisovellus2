@@ -10,7 +10,7 @@
 
 @section scripts {
     <script type="text/javascript">
-        $(function () {
+        (function päivitäSaunalistaus() {
             $.getJSON("/Sauna/SaunanTila", null, function (json) {
                 var saunanTila = JSON.parse(json);
                 //alert("saunan tila: " + saunanTila.length);
@@ -32,25 +32,37 @@
 
                 //saunan tietojen muokkaus
                 $(".glyphicon-pencil").click(function () {
+                    //saunan tietojen etsiminen klikatulta riviltä
                     var saunaID = $(this).parent().parent().prev().prev().prev().text();
                     alert(saunaID);
-                    var sauna = JSON.parse(json2);
-                    //tietojen kopiointi modaali-ikkunaan
-                    $("#SaunanTilaModal").val(sauna.SaunanTila);
-                    $("#SaunanLampotilaModal").val(sauna.SaunanLampotila)
+
+                    //haetaan saunan tiedot ID:n perusteella
+                    $.getJSON("/Sauna/HaeSauna/" + saunaID, null, function (json2) {
+                        var sauna = JSON.parse(json2);
+
+                        //tietojen kopiointi modaali-ikkunaan
+                        $("#SaunaIDModal").val(sauna.SaunaID);
+                        $("#SaunanTilaModal").val(sauna.SaunanTila);
+                        $("#SaunanLampotilaModal").val(sauna.SaunanLampotila);
+
+                        //modaali-ikkunan näyttäminen
+                        $("#SaunaModalTitle").text("Sauna");
+                        $("#myModal").modal("show");
+                    });
                 });
             });
-        });
+        }
 
         //sivun alustaminen, mitä tehdään kun sivusto aukeaa
         $(function () {
             päivitäSaunalistaus();
 
-           $("#saunaModalTallenna").click(function () {
+            $("#saunaModalTallenna").click(function () {
                 // luetaan käyttäjän syöttämät kentät
                 var details = {
+                    SaunaID: $("#SaunaIDModal").val(),
                     SaunanTila: $("#SaunanTilaModal").val(),
-                    SaunanLampotila: $("#SaunanLampotilaModal").val(),
+                    SaunanLampotila: $("#SaunanLampotilaModal").val()
                 };
                 //tietojen päivitys ja uusien tietojen lisäys
                 $.post("/Sauna/update/", details, function (status) {
@@ -63,7 +75,7 @@
                         alert("Tallennus ei onnistunut, kokeile uudestaan.");
                     }
                 });
-           });
+            });
         });
     </script>
 }
@@ -81,11 +93,11 @@
     <tbody></tbody>
 </table>
 
-@*modaali-ikkunan avaaminen*@
-<button type="button" id="muokkaa" class="btn btn-primary btn-lg" data-toggle="modal"
+
+@*<button type="button" id="muokkaa" class="btn btn-primary btn-lg" data-toggle="modal"
         data-target="#myModal">
     Muokkaa saunan asetuksia
-</button>
+</button>*@
 @*modaali-ikkunan määritys*@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -95,13 +107,17 @@
                         data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Saunan lämpötila</h4>
+                <h4 class="modal-title"><span id="SaunaModalTitle">Sauna</span></h4>
 
             </div>
             <div class="modal-body">
                 <div class="row">
+                    <div class="col-md-3">Sauna</div>
+                    <div class="col-md-6"><input class="form-control" id="SaunaIDModal" type="text"></div>
+                </div>
+                <div class="row">
                     <div class="col-md-3">Saunan tila</div>
-                    <div class="col-md-6"><input class="form-control" id="SaunanTilaModal" type="text" ></div>
+                    <div class="col-md-6"><input class="form-control" id="SaunanTilaModal" type="text"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-3">Saunan lämpötila</div>

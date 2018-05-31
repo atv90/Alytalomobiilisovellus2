@@ -44,6 +44,24 @@ namespace Alytalomobiilisovellus2.Controllers
             //tulosten palautus
             return Json(stilajson, JsonRequestBehavior.AllowGet);
         }
+
+        //saunan tietojen haku tietokannasta ID:n perusteella
+        public JsonResult HaeSauna(int id)
+        {
+            AlyTaloEntities entities = new AlyTaloEntities();
+            var sauna = (from s in entities.Sauna
+                         where s.SaunaID == id
+                         select new
+                         {
+                             SaunaID = s.SaunaID,
+                             SaunanTila = s.SaunaTila,
+                             SaunanLampotila = s.SaunaNykyLampotila
+                         }).FirstOrDefault();
+            string saunajson = JsonConvert.SerializeObject(sauna);
+            entities.Dispose();
+            return Json(saunajson, JsonRequestBehavior.AllowGet);
+        }
+
         //GET: tietojen muokkaus, tietokannasta selaimeen
         public ActionResult MuokkaaSauna(int? id)
         {
