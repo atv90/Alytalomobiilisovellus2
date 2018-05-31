@@ -26,6 +26,7 @@ namespace Alytalomobiilisovellus2.Controllers
             var stila = (from s in entities.Sauna
                          select new
                          {
+                             SaunaID = s.SaunaID,
                              SaunanTila = s.SaunaTila,
                              SaunanLampotila = s.SaunaNykyLampotila
 
@@ -43,7 +44,7 @@ namespace Alytalomobiilisovellus2.Controllers
             //tulosten palautus
             return Json(stilajson, JsonRequestBehavior.AllowGet);
         }
-        //GET: tietojen muokkaus
+        //GET: tietojen muokkaus, tietokannasta selaimeen
         public ActionResult MuokkaaSauna(int? id)
         {
             if (id == null)
@@ -61,7 +62,7 @@ namespace Alytalomobiilisovellus2.Controllers
 
             return View(s);
         }
-        //POST: tietojen muokkaus
+        //POST: tietojen muokkaus, selaimelta tietokantaan
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult MuokkaaSauna(SaunaData model)

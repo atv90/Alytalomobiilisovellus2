@@ -21,24 +21,23 @@
                     //alert("lämpötilatila on: " + saunanTila[index].SaunanLampotila);
                     html +=
                         "<tr>" +
-                        "<td></td>" +
+                        "<td>" + saunanTila[index].SaunaID + "</td>" +
                         "<td>" + saunanTila[index].SaunanTila + "</td>" +
                         "<td>" + saunanTila[index].SaunanLampotila + "</td>" +
+                        "<td><a href='#'><span class='glyphicon glyphicon-pencil'></span></a></td>" +
                         "</tr>\r\n";
-                    //    "<ul class='list-group' style='width: auto'>" +
-                    //"<input class='list-group-item' value=" + saunanTila[index].SaunanTila + saunanTila[index].SaunanLampotila + "/>" +
-                    //    "</ul>"
                 }
                 //viittaus id="saunaTaulukko" ja tbody-osioon taulukossa(eli mihin data sijoitetaan)
                 $('#saunaTaulukko tbody').html(html);
 
                 //saunan tietojen muokkaus
-                $("#muokkaa").click(function () {
-
+                $(".glyphicon-pencil").click(function () {
+                    var saunaID = $(this).parent().parent().prev().prev().prev().text();
+                    alert(saunaID);
                     var sauna = JSON.parse(json2);
                     //tietojen kopiointi modaali-ikkunaan
-                    $("#SaunanTila").val(sauna.SaunanTila);
-                    $("#SaunanLampotila").val(sauna.SaunanLampotila)
+                    $("#SaunanTilaModal").val(sauna.SaunanTila);
+                    $("#SaunanLampotilaModal").val(sauna.SaunanLampotila)
                 });
             });
         });
@@ -50,8 +49,8 @@
            $("#saunaModalTallenna").click(function () {
                 // luetaan käyttäjän syöttämät kentät
                 var details = {
-                    SaunanTila: $("#SaunanTila").val(),
-                    SaunanLampotila: $("#SaunanLampotila").val(),
+                    SaunanTila: $("#SaunanTilaModal").val(),
+                    SaunanLampotila: $("#SaunanLampotilaModal").val(),
                 };
                 //tietojen päivitys ja uusien tietojen lisäys
                 $.post("/Sauna/update/", details, function (status) {
@@ -74,7 +73,7 @@
 <table class="table table-striped" id="saunaTaulukko">
     <thead>
         <tr>
-            <th></th>
+            <th>Sauna</th>
             <th>Saunan tila</th>
             <th>Saunan lämpötila</th>
         </tr>
@@ -102,11 +101,11 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-3">Saunan tila</div>
-                    <div class="col-md-6"><input class="form-control" id="SaunanTila" type="text" ></div>
+                    <div class="col-md-6"><input class="form-control" id="SaunanTilaModal" type="text" ></div>
                 </div>
                 <div class="row">
                     <div class="col-md-3">Saunan lämpötila</div>
-                    <div class="col-md-6"><input class="form-control" id="SaunanLampotila" type="text"></div>
+                    <div class="col-md-6"><input class="form-control" id="SaunanLampotilaModal" type="text"></div>
                 </div>
             </div>
             <div class="modal-footer">
