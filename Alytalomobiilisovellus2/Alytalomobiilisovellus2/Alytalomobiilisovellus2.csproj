@@ -152,7 +152,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LampotilaController.cs" />
+    <Compile Include="Controllers\OlohuoneValotController.cs" />
     <Compile Include="Controllers\SaunaController.cs" />
+    <Compile Include="Models\OlohuoneValot.cs">
+      <DependentUpon>AlyTalo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SaunaData.cs" />
     <Compile Include="Controllers\ValaistusController.cs" />
     <Compile Include="Global.asax.cs">
@@ -241,6 +245,7 @@
     <Content Include="Views\Lampotila\Lampotila.cshtml" />
     <Content Include="Views\Valaistus\Valaistus.cshtml" />
     <Content Include="Views\Sauna\Sauna.cshtml" />
+    <Content Include="Views\OlohuoneValot\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
