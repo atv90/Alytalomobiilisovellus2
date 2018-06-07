@@ -14,9 +14,9 @@
         <th>
             @Html.DisplayNameFor(model => model.ValoHuone)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ValotPaalla)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Valot0)
         </th>
@@ -49,9 +49,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.ValoHuone)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.ValotPaalla)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Valot0)
         </td>
@@ -80,6 +80,7 @@
         <td>
             @Html.ActionLink("33", "Valo33", new { id = item.ValoID }) |
             @Html.ActionLink("66", "Valo66", new { id = item.ValoID }) |
+            @Html.ActionLink("100", "Valo100", new { id = item.ValoID }) |
             @Html.ActionLink("Edit", "Edit", new { id = item.ValoID }) |
             @*@Html.ActionLink("Details", "Details", new { id = item.ValoID }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.ValoID })*@

@@ -11,6 +11,8 @@ using Alytalomobiilisovellus2.ViewModels;
 
 namespace Alytalomobiilisovellus2.Controllers
 {
+    //luo oma ViewModel, tässä ValoViewModel, johon kopioitu entiteetin Valot.cs luokan tiedot ja viittaa siihen 
+    //entiteettimallin sijaan, koska tässä muutokset säilyvät päivityksen yhteydessä entiteetin mallissa eivät säily
     public class ValoController : Controller
     {
         private AlyTaloEntities db = new AlyTaloEntities();
@@ -245,13 +247,12 @@ namespace Alytalomobiilisovellus2.Controllers
             //va.ValoTime100 = val.ValoTime100;
             return View(va);
         }
-        //POST: Valo/Valo33
+        //POST: Valo/Valo66
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Valo66(ValoViewModel model)
         {
             Valot va = db.Valot.Find(model.ValoID);
-
             va.Valot0 = false;
             va.Valot33 = false;
             va.Valot66 = true;
@@ -261,6 +262,51 @@ namespace Alytalomobiilisovellus2.Controllers
             //va.ValoTime33 = DateTime.Now;
             va.ValoTime66 = DateTime.Now;
             //va.ValoTime100 = DateTime.Now;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        //GET: Valo/Valo100
+        //näkymän luonti: template:edit ja model class: Valot(Alytalo...)
+        public ActionResult Valo100(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Valot val = db.Valot.Find(id);
+            if (val == null)
+            {
+                return HttpNotFound();
+            }
+            ValoViewModel va = new ValoViewModel();
+            va.ValoID = val.ValoID;
+            va.Valot0 = false;
+            va.Valot33 = false;
+            va.Valot66 = false;
+            va.Valot100 = true;
+            va.ValoHuone = val.ValoHuone;
+            //va.ValoTime0 = val.ValoTime0;
+            //va.ValoTime33 = val.ValoTime33;
+            //va.ValoTime66 = val.ValoTime66;
+            va.ValoTime100 = val.ValoTime100;
+            return View(va);
+        }
+        //POST: Valo/Valo100
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Valo100(ValoViewModel model)
+        {
+            Valot va = db.Valot.Find(model.ValoID);
+            va.Valot0 = false;
+            va.Valot33 = false;
+            va.Valot66 = false;
+            va.Valot100 = true;
+            va.ValoHuone = model.ValoHuone;
+            //va.ValoTime0 = DateTime.Now;
+            //va.ValoTime33 = DateTime.Now;
+            //va.ValoTime66 = DateTime.Now;
+            va.ValoTime100 = DateTime.Now;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

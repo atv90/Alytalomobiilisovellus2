@@ -255,6 +255,7 @@
     <Content Include="Views\Valo\Index.cshtml" />
     <Content Include="Views\Valo\Valo33.cshtml" />
     <Content Include="Views\Valo\Valo66.cshtml" />
+    <Content Include="Views\Valo\Valo100.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
