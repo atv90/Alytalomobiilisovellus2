@@ -154,9 +154,7 @@
     <Compile Include="Controllers\LampotilaController.cs" />
     <Compile Include="Controllers\OlohuoneValotController.cs" />
     <Compile Include="Controllers\SaunaController.cs" />
-    <Compile Include="Models\OlohuoneValot.cs">
-      <DependentUpon>AlyTalo.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Controllers\ValoController.cs" />
     <Compile Include="Models\SaunaData.cs" />
     <Compile Include="Controllers\ValaistusController.cs" />
     <Compile Include="Global.asax.cs">
@@ -186,7 +184,11 @@
     <Compile Include="Models\Valo.cs">
       <DependentUpon>AlyTalo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Valot.cs">
+      <DependentUpon>AlyTalo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ValoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -246,6 +248,12 @@
     <Content Include="Views\Valaistus\Valaistus.cshtml" />
     <Content Include="Views\Sauna\Sauna.cshtml" />
     <Content Include="Views\OlohuoneValot\Index.cshtml" />
+    <Content Include="Views\Valo\Create.cshtml" />
+    <Content Include="Views\Valo\Delete.cshtml" />
+    <Content Include="Views\Valo\Details.cshtml" />
+    <Content Include="Views\Valo\Edit.cshtml" />
+    <Content Include="Views\Valo\Index.cshtml" />
+    <Content Include="Views\Valo\Valo33.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

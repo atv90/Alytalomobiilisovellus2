@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Alytalomobiilisovellus2.ViewModels.ValoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ValoHuone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValotPaalla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valot0)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valot33)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valot66)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valot100)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValoTime0)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValoTime33)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValoTime66)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValoTime100)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValoHuone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValotPaalla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valot0)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valot33)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valot66)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valot100)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValoTime0)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValoTime33)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValoTime66)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValoTime100)
+        </td>
+
+        <td>
+            @Html.ActionLink("33", "Valo33", new { id = item.ValoID }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.ValoID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ValoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ValoID })
+        </td>
+    </tr>
+}
+
+</table>

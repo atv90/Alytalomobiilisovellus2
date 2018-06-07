@@ -13,17 +13,6 @@
           <Property Name="TavoiteLampotila" Type="int" />
           <Property Name="TaloNykyLampotila" Type="int" />
         </EntityType>
-        <EntityType Name="OlohuoneValot">
-          <Key>
-            <PropertyRef Name="ValoID" />
-          </Key>
-          <Property Name="ValoID" Type="int" Nullable="false" />
-          <Property Name="ValotPaalla" Type="bit" />
-          <Property Name="Valot0" Type="bit" />
-          <Property Name="Valot33" Type="bit" />
-          <Property Name="Valot66" Type="bit" />
-          <Property Name="Valot100" Type="bit" />
-        </EntityType>
         <EntityType Name="Sauna">
           <Key>
             <PropertyRef Name="SaunaID" />
@@ -40,11 +29,27 @@
           <Property Name="ValoTila" Type="varchar" MaxLength="50" />
           <Property Name="ValoMaara" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Valot">
+          <Key>
+            <PropertyRef Name="ValoID" />
+          </Key>
+          <Property Name="ValoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ValotPaalla" Type="bit" Nullable="false" />
+          <Property Name="Valot0" Type="bit" Nullable="false" />
+          <Property Name="Valot33" Type="bit" Nullable="false" />
+          <Property Name="Valot66" Type="bit" Nullable="false" />
+          <Property Name="Valot100" Type="bit" Nullable="false" />
+          <Property Name="ValoHuone" Type="nvarchar" MaxLength="100" />
+          <Property Name="ValoTime0" Type="datetime" />
+          <Property Name="ValoTime33" Type="datetime" />
+          <Property Name="ValoTime66" Type="datetime" />
+          <Property Name="ValoTime100" Type="datetime" />
+        </EntityType>
         <EntityContainer Name="AlyTaloModelStoreContainer">
           <EntitySet Name="Lampotila" EntityType="Self.Lampotila" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OlohuoneValot" EntityType="Self.OlohuoneValot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sauna" EntityType="Self.Sauna" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Valo" EntityType="Self.Valo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Valot" EntityType="Self.Valot" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -78,18 +83,23 @@
           <EntitySet Name="Lampotila" EntityType="Self.Lampotila" />
           <EntitySet Name="Sauna" EntityType="Self.Sauna" />
           <EntitySet Name="Valo" EntityType="Self.Valo" />
-          <EntitySet Name="OlohuoneValot" EntityType="AlyTaloModel.OlohuoneValot" />
+          <EntitySet Name="Valot" EntityType="AlyTaloModel.Valot" />
         </EntityContainer>
-        <EntityType Name="OlohuoneValot">
+        <EntityType Name="Valot">
           <Key>
             <PropertyRef Name="ValoID" />
           </Key>
-          <Property Name="ValoID" Type="Int32" Nullable="false" />
-          <Property Name="ValotPaalla" Type="Boolean" />
-          <Property Name="Valot0" Type="Boolean" />
-          <Property Name="Valot33" Type="Boolean" />
-          <Property Name="Valot66" Type="Boolean" />
-          <Property Name="Valot100" Type="Boolean" />
+          <Property Name="ValoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ValotPaalla" Type="Boolean" Nullable="false" />
+          <Property Name="Valot0" Type="Boolean" Nullable="false" />
+          <Property Name="Valot33" Type="Boolean" Nullable="false" />
+          <Property Name="Valot66" Type="Boolean" Nullable="false" />
+          <Property Name="Valot100" Type="Boolean" Nullable="false" />
+          <Property Name="ValoHuone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ValoTime0" Type="DateTime" Precision="3" />
+          <Property Name="ValoTime33" Type="DateTime" Precision="3" />
+          <Property Name="ValoTime66" Type="DateTime" Precision="3" />
+          <Property Name="ValoTime100" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -124,9 +134,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="OlohuoneValot">
-            <EntityTypeMapping TypeName="AlyTaloModel.OlohuoneValot">
-              <MappingFragment StoreEntitySet="OlohuoneValot">
+          <EntitySetMapping Name="Valot">
+            <EntityTypeMapping TypeName="AlyTaloModel.Valot">
+              <MappingFragment StoreEntitySet="Valot">
+                <ScalarProperty Name="ValoTime100" ColumnName="ValoTime100" />
+                <ScalarProperty Name="ValoTime66" ColumnName="ValoTime66" />
+                <ScalarProperty Name="ValoTime33" ColumnName="ValoTime33" />
+                <ScalarProperty Name="ValoTime0" ColumnName="ValoTime0" />
+                <ScalarProperty Name="ValoHuone" ColumnName="ValoHuone" />
                 <ScalarProperty Name="Valot100" ColumnName="Valot100" />
                 <ScalarProperty Name="Valot66" ColumnName="Valot66" />
                 <ScalarProperty Name="Valot33" ColumnName="Valot33" />

@@ -12,13 +12,18 @@ namespace Alytalomobiilisovellus2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class OlohuoneValot
+    public partial class Valot
     {
         public int ValoID { get; set; }
-        public Nullable<bool> ValotPaalla { get; set; }
-        public Nullable<bool> Valot0 { get; set; }
-        public Nullable<bool> Valot33 { get; set; }
-        public Nullable<bool> Valot66 { get; set; }
-        public Nullable<bool> Valot100 { get; set; }
+        public bool ValotPaalla { get; set; }
+        public bool Valot0 { get; set; }
+        public bool Valot33 { get; set; }
+        public bool Valot66 { get; set; }
+        public bool Valot100 { get; set; }
+        public string ValoHuone { get; set; }
+        public Nullable<System.DateTime> ValoTime0 { get; set; }
+        public Nullable<System.DateTime> ValoTime33 { get; set; }
+        public Nullable<System.DateTime> ValoTime66 { get; set; }
+        public Nullable<System.DateTime> ValoTime100 { get; set; }
     }
 }

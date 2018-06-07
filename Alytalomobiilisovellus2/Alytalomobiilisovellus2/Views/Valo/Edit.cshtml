@@ -1,30 +1,22 @@
-﻿@*@model Alytalomobiilisovellus2.Models.OlohuoneValot*@
+﻿@model Alytalomobiilisovellus2.ViewModels.ValoViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Edit";
 }
 
-<h2>OlohuoneValot</h2>
-<div class="btn-group">
-    <button class="btn btn-danger">Valot päällä: @ViewBag.ValotPaalla</button>
-    <button class="btn btn-danger">Valot pois päältä: @ViewBag.Valot0</button>
-    <button class="btn btn-danger">Valot himmeä: @ViewBag.Valot33</button>
-    <button class="btn btn-danger">Valot puolivalo: @ViewBag.Valot66</button>
-    <button class="btn btn-danger">Valot kirkas: @ViewBag.Valot100</button>
+<h2>Edit</h2>
 
-</div>
-
-@*@using (Html.BeginForm())
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4></h4>
+        <h4>Valot</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ValoID)
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.ValotPaalla, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
@@ -42,9 +34,9 @@
                     @Html.ValidationMessageFor(model => model.Valot0, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Valot33, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
@@ -72,6 +64,14 @@
                     @Html.ValidationMessageFor(model => model.Valot100, "", new { @class = "text-danger" })
                 </div>
             </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ValoHuone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ValoHuone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ValoHuone, "", new { @class = "text-danger" })
+            </div>
         </div>
 
         <div class="form-group">
@@ -84,4 +84,4 @@
 
 <div>
     @Html.ActionLink("Back to List", "Index")
-</div>*@
+</div>
