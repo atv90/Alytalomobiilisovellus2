@@ -18,13 +18,17 @@ namespace Alytalomobiilisovellus2.Controllers
         // GET: Valo
         public ActionResult Index()
         {
+            //listataan ValoViewModel-luokan objektit
             List<ValoViewModel> model = new List<ValoViewModel>();
+            //tietokantayhteys
             AlyTaloEntities entities = new AlyTaloEntities();
             try
             {
+                //listataan Valot-luokan objektit alenevaan järjestykseen
                 List<Valot> valo = entities.Valot.OrderByDescending(Valot => Valot.ValoID).ToList();
                 foreach (Valot val in valo)
                 {
+                    //haetaan Valot-luokan objektit tietokannasta va-muuttujaan ja lisätään va model-objektiin
                     ValoViewModel va = new ValoViewModel();
                     va.ValoID = val.ValoID;
                     va.Valot0 = val.Valot0;
@@ -46,20 +50,20 @@ namespace Alytalomobiilisovellus2.Controllers
             return View(model);
         }
 
-        // GET: Valo/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Valot valot = db.Valot.Find(id);
-            if (valot == null)
-            {
-                return HttpNotFound();
-            }
-            return View(valot);
-        }
+        //// GET: Valo/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Valot valot = db.Valot.Find(id);
+        //    if (valot == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(valot);
+        //}
 
         // GET: Valo/Create
         public ActionResult Create()
@@ -136,41 +140,42 @@ namespace Alytalomobiilisovellus2.Controllers
             
         }
 
-        // GET: Valo/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Valot valot = db.Valot.Find(id);
-            if (valot == null)
-            {
-                return HttpNotFound();
-            }
-            return View(valot);
-        }
+        //// GET: Valo/Delete/5
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Valot valot = db.Valot.Find(id);
+        //    if (valot == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(valot);
+        //}
 
-        // POST: Valo/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Valot valot = db.Valot.Find(id);
-            db.Valot.Remove(valot);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //// POST: Valo/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Valot valot = db.Valot.Find(id);
+        //    db.Valot.Remove(valot);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-        //GET
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
+
+        //GET: Valo/Valo33
         public ActionResult Valo33(int? id)
         {
             if (id == null)
