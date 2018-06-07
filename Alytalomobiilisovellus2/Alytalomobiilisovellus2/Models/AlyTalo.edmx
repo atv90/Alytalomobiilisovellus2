@@ -18,8 +18,11 @@
             <PropertyRef Name="SaunaID" />
           </Key>
           <Property Name="SaunaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SaunaTila" Type="varchar" MaxLength="50" />
-          <Property Name="SaunaNykyLampotila" Type="int" />
+          <Property Name="SaunaNro" Type="varchar" MaxLength="50" />
+          <Property Name="SaunaNykyLampötila" Type="int" />
+          <Property Name="SaunaTavoiteLampötila" Type="int" />
+          <Property Name="SaunaPäällä" Type="bit" Nullable="false" />
+          <Property Name="SaunaOFF" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Valo">
           <Key>
@@ -63,14 +66,6 @@
           <Property Name="TavoiteLampotila" Type="Int32" />
           <Property Name="TaloNykyLampotila" Type="Int32" />
         </EntityType>
-        <EntityType Name="Sauna">
-          <Key>
-            <PropertyRef Name="SaunaID" />
-          </Key>
-          <Property Name="SaunaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SaunaTila" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SaunaNykyLampotila" Type="Int32" />
-        </EntityType>
         <EntityType Name="Valo">
           <Key>
             <PropertyRef Name="ValoID" />
@@ -81,9 +76,9 @@
         </EntityType>
         <EntityContainer Name="AlyTaloEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Lampotila" EntityType="Self.Lampotila" />
-          <EntitySet Name="Sauna" EntityType="Self.Sauna" />
           <EntitySet Name="Valo" EntityType="Self.Valo" />
           <EntitySet Name="Valot" EntityType="AlyTaloModel.Valot" />
+          <EntitySet Name="Sauna" EntityType="AlyTaloModel.Sauna" />
         </EntityContainer>
         <EntityType Name="Valot">
           <Key>
@@ -101,6 +96,17 @@
           <Property Name="ValoTime66" Type="DateTime" Precision="3" />
           <Property Name="ValoTime100" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="Sauna">
+          <Key>
+            <PropertyRef Name="SaunaID" />
+          </Key>
+          <Property Name="SaunaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaunaNro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SaunaNykyLampötila" Type="Int32" />
+          <Property Name="SaunaTavoiteLampötila" Type="Int32" />
+          <Property Name="SaunaPäällä" Type="Boolean" Nullable="false" />
+          <Property Name="SaunaOFF" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -113,15 +119,6 @@
                 <ScalarProperty Name="LampotilaID" ColumnName="LampotilaID" />
                 <ScalarProperty Name="TavoiteLampotila" ColumnName="TavoiteLampotila" />
                 <ScalarProperty Name="TaloNykyLampotila" ColumnName="TaloNykyLampotila" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sauna">
-            <EntityTypeMapping TypeName="AlyTaloModel.Sauna">
-              <MappingFragment StoreEntitySet="Sauna">
-                <ScalarProperty Name="SaunaID" ColumnName="SaunaID" />
-                <ScalarProperty Name="SaunaTila" ColumnName="SaunaTila" />
-                <ScalarProperty Name="SaunaNykyLampotila" ColumnName="SaunaNykyLampotila" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -148,6 +145,18 @@
                 <ScalarProperty Name="Valot0" ColumnName="Valot0" />
                 <ScalarProperty Name="ValotPaalla" ColumnName="ValotPaalla" />
                 <ScalarProperty Name="ValoID" ColumnName="ValoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sauna">
+            <EntityTypeMapping TypeName="AlyTaloModel.Sauna">
+              <MappingFragment StoreEntitySet="Sauna">
+                <ScalarProperty Name="SaunaOFF" ColumnName="SaunaOFF" />
+                <ScalarProperty Name="SaunaPäällä" ColumnName="SaunaPäällä" />
+                <ScalarProperty Name="SaunaTavoiteLampötila" ColumnName="SaunaTavoiteLampötila" />
+                <ScalarProperty Name="SaunaNykyLampötila" ColumnName="SaunaNykyLampötila" />
+                <ScalarProperty Name="SaunaNro" ColumnName="SaunaNro" />
+                <ScalarProperty Name="SaunaID" ColumnName="SaunaID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

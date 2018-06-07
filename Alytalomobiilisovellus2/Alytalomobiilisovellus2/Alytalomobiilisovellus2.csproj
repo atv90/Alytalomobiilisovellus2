@@ -155,6 +155,9 @@
     <Compile Include="Controllers\OlohuoneValotController.cs" />
     <Compile Include="Controllers\SaunaController.cs" />
     <Compile Include="Controllers\ValoController.cs" />
+    <Compile Include="Models\Sauna.cs">
+      <DependentUpon>AlyTalo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SaunaData.cs" />
     <Compile Include="Controllers\ValaistusController.cs" />
     <Compile Include="Global.asax.cs">
@@ -176,9 +179,6 @@
       <DependentUpon>AlyTalo.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Lampotila.cs">
-      <DependentUpon>AlyTalo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Sauna.cs">
       <DependentUpon>AlyTalo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Valo.cs">

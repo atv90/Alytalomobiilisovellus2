@@ -15,7 +15,10 @@ namespace Alytalomobiilisovellus2.Models
     public partial class Sauna
     {
         public int SaunaID { get; set; }
-        public string SaunaTila { get; set; }
-        public Nullable<int> SaunaNykyLampotila { get; set; }
+        public string SaunaNro { get; set; }
+        public Nullable<int> SaunaNykyLampötila { get; set; }
+        public Nullable<int> SaunaTavoiteLampötila { get; set; }
+        public bool SaunaPäällä { get; set; }
+        public bool SaunaOFF { get; set; }
     }
 }

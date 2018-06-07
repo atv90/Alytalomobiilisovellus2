@@ -27,8 +27,8 @@ namespace Alytalomobiilisovellus2.Controllers
                          select new
                          {
                              SaunaID = s.SaunaID,
-                             SaunanTila = s.SaunaTila,
-                             SaunanLampotila = s.SaunaNykyLampotila
+                             SaunanTila = s.SaunaNro,
+                             SaunanLampotila = s.SaunaNykyLampötila
 
                          }).ToList();
 
@@ -54,8 +54,8 @@ namespace Alytalomobiilisovellus2.Controllers
                          select new
                          {
                              SaunaID = s.SaunaID,
-                             SaunanTila = s.SaunaTila,
-                             SaunanLampotila = s.SaunaNykyLampotila
+                             SaunanTila = s.SaunaNro,
+                             SaunanLampotila = s.SaunaNykyLampötila
                          }).FirstOrDefault();
             string saunajson = JsonConvert.SerializeObject(sauna);
             entities.Dispose();
@@ -75,8 +75,8 @@ namespace Alytalomobiilisovellus2.Controllers
                 return HttpNotFound();
             }
             SaunaData s = new SaunaData();
-            s.SaunaTila = sauna.SaunaTila;
-            s.SaunaNykyLampotila = sauna.SaunaNykyLampotila;
+            s.SaunaTila = sauna.SaunaNro;
+            s.SaunaNykyLampotila = sauna.SaunaNykyLampötila;
 
             return View(s);
         }
@@ -86,8 +86,8 @@ namespace Alytalomobiilisovellus2.Controllers
         public ActionResult MuokkaaSauna(SaunaData model)
         {
             Sauna s = db.Sauna.Find(model.SaunaTila);
-            s.SaunaTila = model.SaunaTila;
-            s.SaunaNykyLampotila = model.SaunaNykyLampotila;
+            s.SaunaNro = model.SaunaTila;
+            s.SaunaNykyLampötila = model.SaunaNykyLampotila;
 
             db.SaveChanges();
 
@@ -107,8 +107,8 @@ namespace Alytalomobiilisovellus2.Controllers
             if (dbItem != null)
             {
                 dbItem.SaunaID = sauna.SaunaID;
-                dbItem.SaunaTila = sauna.SaunaTila;
-                dbItem.SaunaNykyLampotila = sauna.SaunaNykyLampotila;
+                dbItem.SaunaNro = sauna.SaunaNro;
+                dbItem.SaunaNykyLampötila = sauna.SaunaNykyLampötila;
 
                 entities.SaveChanges();
                 OK = true;
