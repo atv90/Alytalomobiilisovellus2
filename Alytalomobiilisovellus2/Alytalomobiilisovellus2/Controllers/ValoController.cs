@@ -142,40 +142,40 @@ namespace Alytalomobiilisovellus2.Controllers
             
         }
 
-        //// GET: Valo/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Valot valot = db.Valot.Find(id);
-        //    if (valot == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(valot);
-        //}
+        // GET: Valo/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Valot valot = db.Valot.Find(id);
+            if (valot == null)
+            {
+                return HttpNotFound();
+            }
+            return View(valot);
+        }
 
-        //// POST: Valo/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Valot valot = db.Valot.Find(id);
-        //    db.Valot.Remove(valot);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        // POST: Valo/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Valot valot = db.Valot.Find(id);
+            db.Valot.Remove(valot);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
         //GET: Valo/Valo0
         //näkymän luonti: template:edit ja model class: Valot(Alytalo...)
