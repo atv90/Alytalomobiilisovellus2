@@ -177,6 +177,51 @@ namespace Alytalomobiilisovellus2.Controllers
         //    base.Dispose(disposing);
         //}
 
+        //GET: Valo/Valo0
+        //näkymän luonti: template:edit ja model class: Valot(Alytalo...)
+        public ActionResult Valo0(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Valot val = db.Valot.Find(id);
+            if (val == null)
+            {
+                return HttpNotFound();
+            }
+            ValoViewModel va = new ValoViewModel();
+            va.ValoID = val.ValoID;
+            va.Valot0 = true;
+            va.Valot33 = false;
+            va.Valot66 = false;
+            va.Valot100 = false;
+            va.ValoHuone = val.ValoHuone;
+            va.ValoTime0 = val.ValoTime0;
+            //va.ValoTime33 = val.ValoTime33;
+            //va.ValoTime66 = val.ValoTime66;
+            //va.ValoTime100 = val.ValoTime100;
+            return View(va);
+        }
+        //POST: Valo/Valo0
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Valo0(ValoViewModel model)
+        {
+            Valot va = db.Valot.Find(model.ValoID);
+            va.Valot0 = true;
+            va.Valot33 = false;
+            va.Valot66 = false;
+            va.Valot100 = false;
+            va.ValoHuone = model.ValoHuone;
+            va.ValoTime0 = DateTime.Now;
+            //va.ValoTime33 = DateTime.Now;
+            //va.ValoTime66 = DateTime.Now;
+            //va.ValoTime100 = DateTime.Now;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         //GET: Valo/Valo33
         public ActionResult Valo33(int? id)
         {
