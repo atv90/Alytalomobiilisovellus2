@@ -55,25 +55,28 @@ namespace Alytalomobiilisovellus2.Controllers
             return View(model);
         }
 
-        // GET: Sauna/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Sauna sauna = db.Sauna.Find(id);
-            if (sauna == null)
-            {
-                return HttpNotFound();
-            }
-            return View(sauna);
-        }
+        //// GET: Sauna/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Sauna sauna = db.Sauna.Find(id);
+        //    if (sauna == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(sauna);
+        //}
 
         // GET: Sauna/Create
         public ActionResult Create()
         {
-            return View();
+            //tietokantayhteys ja objektin luominen SaunaViewModelista
+            AlyTaloEntities db = new AlyTaloEntities();
+            SaunaViewModel model = new SaunaViewModel();
+            return View(model);
         }
 
         // POST: Sauna/Create
@@ -81,16 +84,27 @@ namespace Alytalomobiilisovellus2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SaunaID,SaunaNro,SaunaNykyLampötila,SaunaTavoiteLampötila,SaunaPäällä,SaunaOFF")] Sauna sauna)
+        public ActionResult Create(SaunaViewModel sauna)
+        //valitaan uuteen riviin luontihetkellä lisättävät tiedot
         {
-            if (ModelState.IsValid)
+            //haetaan SaunaViewModelista luotavia sa-objekteja
+            //vastaavat tiedot
+            Sauna sa = new Sauna();
+            sa.SaunaID = sauna.SaunaID;
+            sa.SaunaNro = sauna.SaunaNro;
+            //lisätään tietokantaan(viitatun db-objektin-luominen sivun ylälaidassa)
+            db.Sauna.Add(sa);
+            //poikkeuskäsittely
+            try
             {
-                db.Sauna.Add(sauna);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
+            catch (Exception ex)
+            {
 
-            return View(sauna);
+            }
+            //palataan takaisin saunalistaukseen
+            return RedirectToAction("Index");
         }
 
         // GET: Sauna/Edit/5
