@@ -1,10 +1,10 @@
-﻿@model Alytalomobiilisovellus2.Models.Sauna
+﻿@model Alytalomobiilisovellus2.ViewModels.SaunaViewModel
 
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Muokkaa saunan numeroa</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Sauna</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.SaunaID)
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.SaunaNykyLampötila, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SaunaNykyLampötila, new { htmlAttributes = new { @class = "form-control" } })
@@ -59,18 +59,18 @@
                     @Html.ValidationMessageFor(model => model.SaunaOFF, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Tallenna" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Takaisin saunalistaukseen", "Index")
 </div>
 
 @section Scripts {

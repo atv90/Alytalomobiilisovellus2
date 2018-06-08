@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 using Alytalomobiilisovellus2.Models;
 using Alytalomobiilisovellus2.ViewModels;
 
@@ -114,12 +115,18 @@ namespace Alytalomobiilisovellus2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sauna sauna = db.Sauna.Find(id);
-            if (sauna == null)
+            //haetaan tietokannasta id:tä vastaavan objektin tiedot
+            Sauna sau = db.Sauna.Find(id);
+            if (sau == null)
             {
                 return HttpNotFound();
             }
-            return View(sauna);
+            //haetaan SaunaViewModelista tarvittavat(=mitä muokataan ja ID yksilöintiin
+            //objektit ja palautetaan ne näkymään
+            SaunaViewModel sa = new SaunaViewModel();
+            sa.SaunaID = sau.SaunaID;
+            sa.SaunaNro = sau.SaunaNro;
+            return View(sa);
         }
 
         // POST: Sauna/Edit/5
@@ -127,15 +134,15 @@ namespace Alytalomobiilisovellus2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SaunaID,SaunaNro,SaunaNykyLampötila,SaunaTavoiteLampötila,SaunaPäällä,SaunaOFF")] Sauna sauna)
+
+        //tietokantaan tallennettavat tiedot
+        public ActionResult Edit(SaunaViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(sauna).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(sauna);
+            Sauna sa = db.Sauna.Find(model.SaunaID);
+            sa.SaunaNro = model.SaunaNro;
+        
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Sauna/Delete/5
