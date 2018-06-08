@@ -1,0 +1,58 @@
+﻿@model Alytalomobiilisovellus2.Models.Sauna
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sauna</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SaunaNro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaunaNro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaunaNykyLampötila)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaunaNykyLampötila)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaunaTavoiteLampötila)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaunaTavoiteLampötila)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaunaPäällä)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaunaPäällä)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaunaOFF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaunaOFF)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SaunaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

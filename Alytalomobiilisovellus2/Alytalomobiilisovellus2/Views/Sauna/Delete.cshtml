@@ -1,0 +1,64 @@
+﻿@model Alytalomobiilisovellus2.Models.Sauna
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Sauna</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SaunaNro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaunaNro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaunaNykyLampötila)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaunaNykyLampötila)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaunaTavoiteLampötila)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaunaTavoiteLampötila)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaunaPäällä)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaunaPäällä)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaunaOFF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaunaOFF)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

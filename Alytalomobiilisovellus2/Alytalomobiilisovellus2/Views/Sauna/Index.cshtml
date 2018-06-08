@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Alytalomobiilisovellus2.ViewModels.SaunaViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SaunaNro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaunaNykyLampötila)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaunaTavoiteLampötila)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaunaPäällä)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaunaOFF)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaunaNro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaunaNykyLampötila)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaunaTavoiteLampötila)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaunaPäällä)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaunaOFF)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SaunaID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SaunaID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SaunaID })
+        </td>
+    </tr>
+}
+
+</table>
