@@ -9,11 +9,11 @@ using System.Web.Mvc;
 
 namespace Alytalomobiilisovellus2.Controllers
 {
-    public class SaunaController : Controller
+    public class SaunatController : Controller
     {
         private AlyTaloEntities db = new AlyTaloEntities();
         // GET: Sauna
-        public ActionResult Sauna()
+        public ActionResult Saunat()
         {
             return View();
         }

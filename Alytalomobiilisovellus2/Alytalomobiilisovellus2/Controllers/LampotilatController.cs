@@ -8,10 +8,10 @@ using System.Web.Mvc;
 
 namespace Alytalomobiilisovellus2.Controllers
 {
-    public class LampotilaController : Controller
+    public class LampotilatController : Controller
     {
         // GET: Lampotila
-        public ActionResult Lampotila()
+        public ActionResult Lampotilat()
         {
             return View();
         }

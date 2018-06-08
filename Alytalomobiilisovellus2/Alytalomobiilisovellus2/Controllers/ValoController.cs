@@ -31,8 +31,9 @@ namespace Alytalomobiilisovellus2.Controllers
                 foreach (Valot val in valo)
                 {
                     //haetaan Valot-luokan objektit tietokannasta va-muuttujaan ja lisätään va model-objektiin
+                    //eli yhdistetään tietokanta ja entiteettimalli toisiinsa
                     ValoViewModel va = new ValoViewModel();
-                    va.ValoID = val.ValoID;
+                    va.ValoID = val.ValoID; //malli = tietokanta
                     va.Valot0 = val.Valot0;
                     va.Valot33 = val.Valot33;
                     va.Valot66 = val.Valot66;
@@ -42,7 +43,7 @@ namespace Alytalomobiilisovellus2.Controllers
                     va.ValoTime33 = val.ValoTime33;
                     va.ValoTime66 = val.ValoTime66;
                     va.ValoTime100 = val.ValoTime100;
-                    model.Add(va);
+                    model.Add(va);//va:n lisääminen modeliin
                 }
             }
             finally

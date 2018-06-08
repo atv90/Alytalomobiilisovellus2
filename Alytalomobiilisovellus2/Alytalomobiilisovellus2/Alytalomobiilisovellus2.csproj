@@ -151,9 +151,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LampotilaController.cs" />
+    <Compile Include="Controllers\LampotilatController.cs" />
     <Compile Include="Controllers\OlohuoneValotController.cs" />
-    <Compile Include="Controllers\SaunaController.cs" />
+    <Compile Include="Controllers\SaunatController.cs" />
     <Compile Include="Controllers\ValoController.cs" />
     <Compile Include="Models\Sauna.cs">
       <DependentUpon>AlyTalo.tt</DependentUpon>
@@ -244,9 +244,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Lampotila\Lampotila.cshtml" />
+    <Content Include="Views\Lampotilat\Lampotilat.cshtml" />
     <Content Include="Views\Valaistus\Valaistus.cshtml" />
-    <Content Include="Views\Sauna\Sauna.cshtml" />
+    <Content Include="Views\Saunat\Saunat.cshtml" />
     <Content Include="Views\OlohuoneValot\Index.cshtml" />
     <Content Include="Views\Valo\Create.cshtml" />
     <Content Include="Views\Valo\Delete.cshtml" />
