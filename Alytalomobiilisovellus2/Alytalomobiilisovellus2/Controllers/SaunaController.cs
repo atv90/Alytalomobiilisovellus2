@@ -179,5 +179,45 @@ namespace Alytalomobiilisovellus2.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //GET: Sauna/SaunaON
+        public ActionResult SaunaOn(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Sauna sau = db.Sauna.Find(id);
+            if(sau == null)
+            {
+                return HttpNotFound();
+            }
+            //haetaan halutut tiedot tietokannasta
+            SaunaViewModel sa = new SaunaViewModel();
+            sa.SaunaID = sau.SaunaID;
+            sa.SaunaNro = sau.SaunaNro;
+            sa.SaunaNykyLampötila = sau.SaunaNykyLampötila;
+            sa.SaunaTavoiteLampötila = sau.SaunaTavoiteLampötila;
+            sa.SaunaPäällä = true;
+            sa.SaunaOFF = false;
+
+            return View(sa);
+        }
+        //mitä tallennetaan tietokantaan
+        //POST: Sauna/ON
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaunaON(SaunaViewModel model)
+        {
+            Sauna sa = db.Sauna.Find(model.SaunaID);
+            sa.SaunaID = model.SaunaID;
+            sa.SaunaNro = model.SaunaNro;
+            sa.SaunaNykyLampötila = model.SaunaNykyLampötila;
+            sa.SaunaTavoiteLampötila = model.SaunaTavoiteLampötila;
+            sa.SaunaPäällä = true;
+            sa.SaunaOFF = false;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

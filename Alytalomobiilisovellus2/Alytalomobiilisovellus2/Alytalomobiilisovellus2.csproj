@@ -264,6 +264,7 @@
     <Content Include="Views\Sauna\Details.cshtml" />
     <Content Include="Views\Sauna\Edit.cshtml" />
     <Content Include="Views\Sauna\Index.cshtml" />
+    <Content Include="Views\Sauna\SaunaON.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
