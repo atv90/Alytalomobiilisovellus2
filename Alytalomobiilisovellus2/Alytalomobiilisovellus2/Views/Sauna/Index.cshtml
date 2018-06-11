@@ -48,9 +48,11 @@
         </td>
         <td>
             @Html.ActionLink("ON", "SaunaON", new { id = item.SaunaID }) |
+            @Html.ActionLink("OFF", "SaunaOFF", new { id = item.SaunaID }) |
             @Html.ActionLink("Muokkaa", "Edit", new { id = item.SaunaID }) |
-            @*@Html.ActionLink("Details", "Details", new { id=item.SaunaID })*@ |
             @Html.ActionLink("Poista", "Delete", new { id = item.SaunaID })
+            @*@Html.ActionLink("Details", "Details", new { id=item.SaunaID })*@ |
+
         </td>
     </tr>
 }

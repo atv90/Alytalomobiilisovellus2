@@ -2,13 +2,13 @@
 @{
     ViewBag.Title = "Sauna";
 }
-
+@*EI KÄYTÖSSÄ!!!*@
 <h2>Sauna</h2>
 
 @*saunan tilan listaaminen tietokannasta*@
 @*JavaScriptillä JSON-kutsu palvelimelle*@
 
-@section scripts {
+@*@section scripts {
     <script type="text/javascript">
         (function päivitäSaunalistaus() {
             $.getJSON("/Saunat/SaunanTila", null, function (json) {
@@ -78,11 +78,11 @@
             });
         });
     </script>
-}
+}*@
 
 
 @*taulukon sarakeotsikot*@
-<table class="table table-striped" id="saunaTaulukko">
+@*<table class="table table-striped" id="saunaTaulukko">
     <thead>
         <tr>
             <th>Sauna</th>
@@ -91,7 +91,7 @@
         </tr>
     </thead>
     <tbody></tbody>
-</table>
+</table>*@
 
 
 @*<button type="button" id="muokkaa" class="btn btn-primary btn-lg" data-toggle="modal"
@@ -99,7 +99,7 @@
     Muokkaa saunan asetuksia
 </button>*@
 @*modaali-ikkunan määritys*@
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+@*<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -139,4 +139,4 @@
 
     </div><!-- /.modal-dialog -->
 
-</div><!-- /.modal -->
+</div><!-- /.modal -->*@

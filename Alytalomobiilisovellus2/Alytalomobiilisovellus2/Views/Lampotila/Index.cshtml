@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Alytalomobiilisovellus2.Models.Lampotila>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TavoiteLampotila)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaloNykyLampotila)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LämmitysON)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LämmitysOFF)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TavoiteLampotila)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaloNykyLampotila)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LämmitysON)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LämmitysOFF)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LampotilaID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LampotilaID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LampotilaID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -17,5 +17,7 @@ namespace Alytalomobiilisovellus2.Models
         public int LampotilaID { get; set; }
         public Nullable<int> TavoiteLampotila { get; set; }
         public Nullable<int> TaloNykyLampotila { get; set; }
+        public bool LämmitysON { get; set; }
+        public bool LämmitysOFF { get; set; }
     }
 }

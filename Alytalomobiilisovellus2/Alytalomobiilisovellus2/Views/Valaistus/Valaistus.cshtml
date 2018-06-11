@@ -2,13 +2,14 @@
 @{
     ViewBag.Title = "Valaistus";
 }
+@*EI KÄYTÖSSÄ!!!*@
 
 <h2>Valaistus</h2>
 
 @*valaistuksen tilan listaaminen tietokannasta*@
 @*JavaScriptillä JSON-kutsu palvelimelle*@
 
-@section scripts {
+@*@section scripts {
 
     <script type="text/javascript">
         $(function () {
@@ -21,17 +22,17 @@
                     html +=
                         "<tr>" +
                         "<td></td>" +
-                    "<td>" + valaistusTila[index].ValaistusTila + "</td>" +
-                    "<td>" + valaistusTila[index].ValaistusMaara + "</td>" +
+                        "<td>" + valaistusTila[index].ValaistusTila + "</td>" +
+                        "<td>" + valaistusTila[index].ValaistusMaara + "</td>" +
                         "</tr>\r\n";
                 }
                 $('#valaistusTaulukko tbody').html(html);
             });
         });
     </script>
-}
+}*@
 @*taulukon sarakeotsikot*@
-<table class="table table-striped" id="valaistusTaulukko">
+@*<table class="table table-striped" id="valaistusTaulukko">
     <thead>
         <tr>
             <th></th>
@@ -40,4 +41,4 @@
         </tr>
     </thead>
     <tbody></tbody>
-</table>
+</table>*@

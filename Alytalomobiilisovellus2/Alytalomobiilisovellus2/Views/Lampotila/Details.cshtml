@@ -1,0 +1,50 @@
+﻿@model Alytalomobiilisovellus2.Models.Lampotila
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lampotila</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TavoiteLampotila)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TavoiteLampotila)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaloNykyLampotila)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaloNykyLampotila)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LämmitysON)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LämmitysON)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LämmitysOFF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LämmitysOFF)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LampotilaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

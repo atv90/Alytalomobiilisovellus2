@@ -219,5 +219,47 @@ namespace Alytalomobiilisovellus2.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        
+        //GET: SaunaOFF
+        public ActionResult SaunaOFF(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //haetaan tietokannasta parametrina annetun id:n arvot
+            Sauna sau = db.Sauna.Find(id);
+            //jos haettu arvo on nolla palautetaan:
+            if (sau == null)
+            {
+                return HttpNotFound();
+            }
+            //muulloin haetaan seuraavat tiedot tietokannasta SaunaViewModelin
+            //objekteille(mikä vastaa mitäkin)
+            SaunaViewModel sa = new SaunaViewModel();//luodaat osioon uusi SaunaViewModel-objekti
+            sa.SaunaID = sau.SaunaID;//haluttujen tietjen hakeminen/vastaavuus tietokannasta
+            sa.SaunaNro = sau.SaunaNro;
+            sa.SaunaPäällä = false;
+            sa.SaunaOFF = true;
+
+            //palautetaan sa-objektit näkymään
+            return View(sa);
+        }
+        //POST: SaunaOFF
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaunaOFF(SaunaViewModel model)//SaunaViewModelin kautta tietokantaan tallennettavat tiedot
+        {
+            Sauna sa = db.Sauna.Find(model.SaunaID);//etsitään SaunaViewModelin SaunaID
+            //haetaan mallista tallennettavat tiedot
+            sa.SaunaID = model.SaunaID;
+            sa.SaunaNro = model.SaunaNro;
+            sa.SaunaPäällä = false;
+            sa.SaunaOFF = true;
+            //tallennetaan muutokset tietokantaan
+            db.SaveChanges();
+            //palataan päänäkymään
+            return RedirectToAction("Index");
+        }
     }
 }

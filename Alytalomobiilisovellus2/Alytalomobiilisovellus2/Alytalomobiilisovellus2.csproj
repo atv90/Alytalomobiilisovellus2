@@ -151,15 +151,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LampotilaController.cs" />
     <Compile Include="Controllers\LampotilatController.cs" />
     <Compile Include="Controllers\OlohuoneValotController.cs" />
     <Compile Include="Controllers\SaunaController.cs" />
     <Compile Include="Controllers\SaunatController.cs" />
     <Compile Include="Controllers\ValoController.cs" />
+    <Compile Include="Models\Lampotila.cs">
+      <DependentUpon>AlyTalo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sauna.cs">
       <DependentUpon>AlyTalo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SaunaData.cs" />
     <Compile Include="Controllers\ValaistusController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -179,9 +182,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AlyTalo.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Lampotila.cs">
-      <DependentUpon>AlyTalo.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Valo.cs">
       <DependentUpon>AlyTalo.tt</DependentUpon>
     </Compile>
@@ -189,6 +189,7 @@
       <DependentUpon>AlyTalo.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\LampotilaViewModel.cs" />
     <Compile Include="ViewModels\SaunaViewModel.cs" />
     <Compile Include="ViewModels\ValoViewModel.cs" />
   </ItemGroup>
@@ -265,6 +266,12 @@
     <Content Include="Views\Sauna\Edit.cshtml" />
     <Content Include="Views\Sauna\Index.cshtml" />
     <Content Include="Views\Sauna\SaunaON.cshtml" />
+    <Content Include="Views\Sauna\SaunaOFF.cshtml" />
+    <Content Include="Views\Lampotila\Create.cshtml" />
+    <Content Include="Views\Lampotila\Delete.cshtml" />
+    <Content Include="Views\Lampotila\Details.cshtml" />
+    <Content Include="Views\Lampotila\Edit.cshtml" />
+    <Content Include="Views\Lampotila\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

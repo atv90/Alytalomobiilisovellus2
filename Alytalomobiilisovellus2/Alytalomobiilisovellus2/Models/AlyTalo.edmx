@@ -12,6 +12,8 @@
           <Property Name="LampotilaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TavoiteLampotila" Type="int" />
           <Property Name="TaloNykyLampotila" Type="int" />
+          <Property Name="LämmitysON" Type="bit" Nullable="false" />
+          <Property Name="LämmitysOFF" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Sauna">
           <Key>
@@ -58,14 +60,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AlyTaloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Lampotila">
-          <Key>
-            <PropertyRef Name="LampotilaID" />
-          </Key>
-          <Property Name="LampotilaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TavoiteLampotila" Type="Int32" />
-          <Property Name="TaloNykyLampotila" Type="Int32" />
-        </EntityType>
         <EntityType Name="Valo">
           <Key>
             <PropertyRef Name="ValoID" />
@@ -75,10 +69,10 @@
           <Property Name="ValoMaara" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="AlyTaloEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Lampotila" EntityType="Self.Lampotila" />
           <EntitySet Name="Valo" EntityType="Self.Valo" />
           <EntitySet Name="Valot" EntityType="AlyTaloModel.Valot" />
           <EntitySet Name="Sauna" EntityType="AlyTaloModel.Sauna" />
+          <EntitySet Name="Lampotila" EntityType="AlyTaloModel.Lampotila" />
         </EntityContainer>
         <EntityType Name="Valot">
           <Key>
@@ -107,21 +101,22 @@
           <Property Name="SaunaPäällä" Type="Boolean" Nullable="false" />
           <Property Name="SaunaOFF" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="Lampotila">
+          <Key>
+            <PropertyRef Name="LampotilaID" />
+          </Key>
+          <Property Name="LampotilaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TavoiteLampotila" Type="Int32" />
+          <Property Name="TaloNykyLampotila" Type="Int32" />
+          <Property Name="LämmitysON" Type="Boolean" Nullable="false" />
+          <Property Name="LämmitysOFF" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AlyTaloModelStoreContainer" CdmEntityContainer="AlyTaloEntities">
-          <EntitySetMapping Name="Lampotila">
-            <EntityTypeMapping TypeName="AlyTaloModel.Lampotila">
-              <MappingFragment StoreEntitySet="Lampotila">
-                <ScalarProperty Name="LampotilaID" ColumnName="LampotilaID" />
-                <ScalarProperty Name="TavoiteLampotila" ColumnName="TavoiteLampotila" />
-                <ScalarProperty Name="TaloNykyLampotila" ColumnName="TaloNykyLampotila" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Valo">
             <EntityTypeMapping TypeName="AlyTaloModel.Valo">
               <MappingFragment StoreEntitySet="Valo">
@@ -157,6 +152,17 @@
                 <ScalarProperty Name="SaunaNykyLampötila" ColumnName="SaunaNykyLampötila" />
                 <ScalarProperty Name="SaunaNro" ColumnName="SaunaNro" />
                 <ScalarProperty Name="SaunaID" ColumnName="SaunaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lampotila">
+            <EntityTypeMapping TypeName="AlyTaloModel.Lampotila">
+              <MappingFragment StoreEntitySet="Lampotila">
+                <ScalarProperty Name="LämmitysOFF" ColumnName="LämmitysOFF" />
+                <ScalarProperty Name="LämmitysON" ColumnName="LämmitysON" />
+                <ScalarProperty Name="TaloNykyLampotila" ColumnName="TaloNykyLampotila" />
+                <ScalarProperty Name="TavoiteLampotila" ColumnName="TavoiteLampotila" />
+                <ScalarProperty Name="LampotilaID" ColumnName="LampotilaID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
