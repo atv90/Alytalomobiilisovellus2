@@ -119,6 +119,7 @@ namespace Alytalomobiilisovellus2.Controllers
             la.TaloNykyLampotila = model.TaloNykyLampotila;
             la.TavoiteLampotila = model.TavoiteLampotila;
             la.LämmitysON = true;
+            la.LämmitysOFF = false;
 
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -190,6 +191,41 @@ namespace Alytalomobiilisovellus2.Controllers
             la.LampotilaID = model.LampotilaID;
             la.LämmitysON = true;
             la.LämmitysOFF = false;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        //GET: Lampotila/LammitysOFF
+        public ActionResult LammitysOFF(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //haku tieokannasta id:n perusteella
+            Lampotila lam = db.Lampotila.Find(id);
+            if (lam == null)
+            {
+                return HttpNotFound();
+            }
+            //tietokantatietojen ja LammitysViewModelin la-objektien yhdistäminen
+            LampotilaViewModel la = new LampotilaViewModel();
+            la.LampotilaID = lam.LampotilaID;
+            la.LämmitysON = false;
+            la.LämmitysOFF = true;
+
+            return View(la);
+        }
+        //mitä tallennetaan tietokantaan
+        //POST: Lampotila/LammitysON
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LammitysOFF(LampotilaViewModel model)
+        {
+            Lampotila la = db.Lampotila.Find(model.LampotilaID);
+            la.LampotilaID = model.LampotilaID;
+            la.LämmitysON = false;
+            la.LämmitysOFF = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
