@@ -272,6 +272,7 @@
     <Content Include="Views\Lampotila\Details.cshtml" />
     <Content Include="Views\Lampotila\Edit.cshtml" />
     <Content Include="Views\Lampotila\Index.cshtml" />
+    <Content Include="Views\Lampotila\LammitysON.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

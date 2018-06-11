@@ -6,9 +6,9 @@
 
 <h2>Talon lämpötila</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -41,9 +41,11 @@
             @Html.DisplayFor(modelItem => item.LämmitysOFF)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LampotilaID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LampotilaID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LampotilaID })
+            @Html.ActionLink("Muokkaa lämpötilaa", "Edit", new { id = item.LampotilaID }) |
+            @Html.ActionLink("ON", "LammitysON", new { id = item.LampotilaID }) |
+            @Html.ActionLink("OFF", "LammitysOFF", new { id = item.LampotilaID })
+            @*@Html.ActionLink("Details", "Details", new { id=item.LampotilaID }) |
+        @Html.ActionLink("Delete", "Delete", new { id=item.LampotilaID })*@
         </td>
     </tr>
 }

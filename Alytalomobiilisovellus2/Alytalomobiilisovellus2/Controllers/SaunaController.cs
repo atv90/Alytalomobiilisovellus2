@@ -204,7 +204,7 @@ namespace Alytalomobiilisovellus2.Controllers
             return View(sa);
         }
         //mitä tallennetaan tietokantaan
-        //POST: Sauna/ON
+        //POST: Sauna/SaunaON
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SaunaON(SaunaViewModel model)
@@ -220,7 +220,7 @@ namespace Alytalomobiilisovellus2.Controllers
             return RedirectToAction("Index");
         }
         
-        //GET: SaunaOFF
+        //GET: Sauna/SaunaOFF
         public ActionResult SaunaOFF(int? id)
         {
             if (id == null)
@@ -245,7 +245,7 @@ namespace Alytalomobiilisovellus2.Controllers
             //palautetaan sa-objektit näkymään
             return View(sa);
         }
-        //POST: SaunaOFF
+        //POST: Sauna/SaunaOFF
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SaunaOFF(SaunaViewModel model)//SaunaViewModelin kautta tietokantaan tallennettavat tiedot
