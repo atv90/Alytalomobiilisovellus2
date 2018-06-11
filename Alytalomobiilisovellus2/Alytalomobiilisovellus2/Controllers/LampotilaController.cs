@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Alytalomobiilisovellus2.Models;
+using Alytalomobiilisovellus2.ViewModels;
 
 namespace Alytalomobiilisovellus2.Controllers
 {
@@ -14,10 +15,37 @@ namespace Alytalomobiilisovellus2.Controllers
     {
         private AlyTaloEntities db = new AlyTaloEntities();
 
-        // GET: Lampotila
+        // GET: Lampotila LampotilaViewModel objektien palauttaminen näkymään
         public ActionResult Index()
         {
-            return View(db.Lampotila.ToList());
+            //luodaan uusi model-objekti, joka palautetaan lopuksi näkymään
+            List<LampotilaViewModel> model = new List<LampotilaViewModel>();
+            //avataan tietokantayhteys
+            AlyTaloEntities entities = new AlyTaloEntities();
+
+            //haetaan vastaavat objektit tietokannasta, jotka halutaan mukaan model-objektin listaukseen
+            try
+            {
+                List<Lampotila> lampotila = entities.Lampotila.ToList();
+                foreach (Lampotila lam in lampotila)
+                {
+                    //uusi LampotilaViewModel-objekti, johon tietokantatiedot haetaan
+                    LampotilaViewModel la = new LampotilaViewModel();
+                    la.LampotilaID = lam.LampotilaID;
+                    la.TaloNykyLampotila = lam.TaloNykyLampotila;
+                    la.TavoiteLampotila = lam.TavoiteLampotila;
+                    la.LämmitysON = lam.LämmitysON;
+                    la.LämmitysOFF = lam.LämmitysOFF;
+                    //tietokannasta haettuja la-objektien lisääminen model-objektiin
+                    model.Add(la);
+                }
+            }
+            finally
+            {
+                entities.Dispose();
+            }
+            //model-objektin palautus näkymään
+            return View(model);
         }
 
         //// GET: Lampotila/Details/5
