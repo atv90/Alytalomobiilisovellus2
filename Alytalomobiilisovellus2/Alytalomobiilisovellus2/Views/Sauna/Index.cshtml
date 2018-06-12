@@ -7,7 +7,7 @@
 <h2>Talon saunat</h2>
 
 <p>
-    @Html.ActionLink("Lisää uusi", "Create")
+    @Html.ActionLink("Lisää uusi sauna", "Create")
 </p>
 <table class="table">
     <tr>
@@ -63,7 +63,7 @@
             @Html.ActionLink("OFF", "SaunaOFF", new { id = item.SaunaID }) |
             @Html.ActionLink("Muokkaa", "Edit", new { id = item.SaunaID }) |
             @Html.ActionLink("Poista", "Delete", new { id = item.SaunaID })
-            @*@Html.ActionLink("Details", "Details", new { id=item.SaunaID })*@ |
+            @*@Html.ActionLink("Details", "Details", new { id=item.SaunaID })*@
 
         </td>
     </tr>
