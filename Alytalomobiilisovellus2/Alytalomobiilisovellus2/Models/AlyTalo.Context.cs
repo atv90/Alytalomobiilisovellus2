@@ -27,7 +27,7 @@ namespace Alytalomobiilisovellus2.Models
     
         public virtual DbSet<Valo> Valo { get; set; }
         public virtual DbSet<Valot> Valot { get; set; }
-        public virtual DbSet<Lampotila> Lampotila { get; set; }
         public virtual DbSet<Sauna> Sauna { get; set; }
+        public virtual DbSet<Lampotila> Lampotila { get; set; }
     }
 }

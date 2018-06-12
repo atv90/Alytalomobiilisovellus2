@@ -19,5 +19,7 @@ namespace Alytalomobiilisovellus2.Models
         public Nullable<int> TaloNykyLampotila { get; set; }
         public bool LämmitysON { get; set; }
         public bool LämmitysOFF { get; set; }
+        public Nullable<System.DateTime> LämmitysONTime { get; set; }
+        public Nullable<System.DateTime> LämmitysOFFTime { get; set; }
     }
 }

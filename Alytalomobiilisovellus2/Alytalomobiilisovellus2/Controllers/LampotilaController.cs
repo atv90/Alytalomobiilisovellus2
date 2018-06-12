@@ -36,6 +36,8 @@ namespace Alytalomobiilisovellus2.Controllers
                     la.TavoiteLampotila = lam.TavoiteLampotila;
                     la.LämmitysON = lam.LämmitysON;
                     la.LämmitysOFF = lam.LämmitysOFF;
+                    la.LämmitysONTime = lam.LämmitysONTime;
+                    la.LämmitysOFFTime = lam.LämmitysOFFTime;
                     //tietokannasta haettuja la-objektien lisääminen model-objektiin
                     model.Add(la);
                 }
@@ -178,6 +180,7 @@ namespace Alytalomobiilisovellus2.Controllers
             la.LampotilaID = lam.LampotilaID;
             la.LämmitysON = true;
             la.LämmitysOFF = false;
+            la.LämmitysONTime = lam.LämmitysONTime;
 
             return View(la);
         }
@@ -191,6 +194,7 @@ namespace Alytalomobiilisovellus2.Controllers
             la.LampotilaID = model.LampotilaID;
             la.LämmitysON = true;
             la.LämmitysOFF = false;
+            la.LämmitysONTime = DateTime.Now;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -213,6 +217,7 @@ namespace Alytalomobiilisovellus2.Controllers
             la.LampotilaID = lam.LampotilaID;
             la.LämmitysON = false;
             la.LämmitysOFF = true;
+            la.LämmitysOFFTime = lam.LämmitysOFFTime;
 
             return View(la);
         }
@@ -226,6 +231,7 @@ namespace Alytalomobiilisovellus2.Controllers
             la.LampotilaID = model.LampotilaID;
             la.LämmitysON = false;
             la.LämmitysOFF = true;
+            la.LämmitysOFFTime = DateTime.Now;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

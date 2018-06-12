@@ -14,6 +14,8 @@
           <Property Name="TaloNykyLampotila" Type="int" />
           <Property Name="LämmitysON" Type="bit" Nullable="false" />
           <Property Name="LämmitysOFF" Type="bit" Nullable="false" />
+          <Property Name="LämmitysONTime" Type="datetime" />
+          <Property Name="LämmitysOFFTime" Type="datetime" />
         </EntityType>
         <EntityType Name="Sauna">
           <Key>
@@ -73,8 +75,8 @@
         <EntityContainer Name="AlyTaloEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Valo" EntityType="Self.Valo" />
           <EntitySet Name="Valot" EntityType="AlyTaloModel.Valot" />
-          <EntitySet Name="Lampotila" EntityType="AlyTaloModel.Lampotila" />
           <EntitySet Name="Sauna" EntityType="AlyTaloModel.Sauna" />
+          <EntitySet Name="Lampotila" EntityType="AlyTaloModel.Lampotila" />
         </EntityContainer>
         <EntityType Name="Valot">
           <Key>
@@ -92,16 +94,6 @@
           <Property Name="ValoTime66" Type="DateTime" Precision="3" />
           <Property Name="ValoTime100" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="Lampotila">
-          <Key>
-            <PropertyRef Name="LampotilaID" />
-          </Key>
-          <Property Name="LampotilaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TavoiteLampotila" Type="Int32" />
-          <Property Name="TaloNykyLampotila" Type="Int32" />
-          <Property Name="LämmitysON" Type="Boolean" Nullable="false" />
-          <Property Name="LämmitysOFF" Type="Boolean" Nullable="false" />
-        </EntityType>
         <EntityType Name="Sauna">
           <Key>
             <PropertyRef Name="SaunaID" />
@@ -114,6 +106,18 @@
           <Property Name="SaunaOFF" Type="Boolean" Nullable="false" />
           <Property Name="SaunaPäälleTime" Type="DateTime" Precision="3" />
           <Property Name="SaunaOFFTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Lampotila">
+          <Key>
+            <PropertyRef Name="LampotilaID" />
+          </Key>
+          <Property Name="LampotilaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TavoiteLampotila" Type="Int32" />
+          <Property Name="TaloNykyLampotila" Type="Int32" />
+          <Property Name="LämmitysON" Type="Boolean" Nullable="false" />
+          <Property Name="LämmitysOFF" Type="Boolean" Nullable="false" />
+          <Property Name="LämmitysONTime" Type="DateTime" Precision="3" />
+          <Property Name="LämmitysOFFTime" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -147,17 +151,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Lampotila">
-            <EntityTypeMapping TypeName="AlyTaloModel.Lampotila">
-              <MappingFragment StoreEntitySet="Lampotila">
-                <ScalarProperty Name="LämmitysOFF" ColumnName="LämmitysOFF" />
-                <ScalarProperty Name="LämmitysON" ColumnName="LämmitysON" />
-                <ScalarProperty Name="TaloNykyLampotila" ColumnName="TaloNykyLampotila" />
-                <ScalarProperty Name="TavoiteLampotila" ColumnName="TavoiteLampotila" />
-                <ScalarProperty Name="LampotilaID" ColumnName="LampotilaID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Sauna">
             <EntityTypeMapping TypeName="AlyTaloModel.Sauna">
               <MappingFragment StoreEntitySet="Sauna">
@@ -169,6 +162,19 @@
                 <ScalarProperty Name="SaunaNykyLampötila" ColumnName="SaunaNykyLampötila" />
                 <ScalarProperty Name="SaunaNro" ColumnName="SaunaNro" />
                 <ScalarProperty Name="SaunaID" ColumnName="SaunaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lampotila">
+            <EntityTypeMapping TypeName="AlyTaloModel.Lampotila">
+              <MappingFragment StoreEntitySet="Lampotila">
+                <ScalarProperty Name="LämmitysOFFTime" ColumnName="LämmitysOFFTime" />
+                <ScalarProperty Name="LämmitysONTime" ColumnName="LämmitysONTime" />
+                <ScalarProperty Name="LämmitysOFF" ColumnName="LämmitysOFF" />
+                <ScalarProperty Name="LämmitysON" ColumnName="LämmitysON" />
+                <ScalarProperty Name="TaloNykyLampotila" ColumnName="TaloNykyLampotila" />
+                <ScalarProperty Name="TavoiteLampotila" ColumnName="TavoiteLampotila" />
+                <ScalarProperty Name="LampotilaID" ColumnName="LampotilaID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -23,6 +23,12 @@
         <th>
             @Html.DisplayNameFor(model => model.LämmitysOFF)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LämmitysONTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LämmitysOFFTime)
+        </th>
         <th></th>
     </tr>
 
@@ -41,11 +47,17 @@
             @Html.DisplayFor(modelItem => item.LämmitysOFF)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.LämmitysONTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LämmitysOFFTime)
+        </td>
+        <td>
             @Html.ActionLink("Muokkaa lämpötilaa", "Edit", new { id = item.LampotilaID }) |
             @Html.ActionLink("ON", "LammitysON", new { id = item.LampotilaID }) |
             @Html.ActionLink("OFF", "LammitysOFF", new { id = item.LampotilaID })
             @*@Html.ActionLink("Details", "Details", new { id=item.LampotilaID }) |
-        @Html.ActionLink("Delete", "Delete", new { id=item.LampotilaID })*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.LampotilaID })*@
         </td>
     </tr>
 }
