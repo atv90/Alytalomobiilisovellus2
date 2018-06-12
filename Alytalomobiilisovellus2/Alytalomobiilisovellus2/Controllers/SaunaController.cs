@@ -44,6 +44,8 @@ namespace Alytalomobiilisovellus2.Controllers
                     sa.SaunaTavoiteLampötila = sau.SaunaTavoiteLampötila;
                     sa.SaunaPäällä = sau.SaunaPäällä;
                     sa.SaunaOFF = sau.SaunaOFF;
+                    sa.SaunaPäälleTime = sau.SaunaPäälleTime;
+                    sa.SaunaOFFTime = sau.SaunaOFFTime;
                     //lisätään sa-objektit modeliin
                     model.Add(sa);
                 }
@@ -200,6 +202,7 @@ namespace Alytalomobiilisovellus2.Controllers
             sa.SaunaTavoiteLampötila = sau.SaunaTavoiteLampötila;
             sa.SaunaPäällä = true;
             sa.SaunaOFF = false;
+            sa.SaunaPäälleTime = sau.SaunaPäälleTime;
 
             return View(sa);
         }
@@ -216,6 +219,7 @@ namespace Alytalomobiilisovellus2.Controllers
             sa.SaunaTavoiteLampötila = model.SaunaTavoiteLampötila;
             sa.SaunaPäällä = true;
             sa.SaunaOFF = false;
+            sa.SaunaPäälleTime = DateTime.Now;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -241,6 +245,7 @@ namespace Alytalomobiilisovellus2.Controllers
             sa.SaunaNro = sau.SaunaNro;
             sa.SaunaPäällä = false;
             sa.SaunaOFF = true;
+            sa.SaunaOFFTime = sau.SaunaOFFTime;
 
             //palautetaan sa-objektit näkymään
             return View(sa);
@@ -256,6 +261,7 @@ namespace Alytalomobiilisovellus2.Controllers
             sa.SaunaNro = model.SaunaNro;
             sa.SaunaPäällä = false;
             sa.SaunaOFF = true;
+            sa.SaunaOFFTime = DateTime.Now;
             //tallennetaan muutokset tietokantaan
             db.SaveChanges();
             //palataan päänäkymään

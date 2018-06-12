@@ -15,5 +15,7 @@ namespace Alytalomobiilisovellus2.ViewModels
         public Nullable<int> SaunaTavoiteLampötila { get; set; }
         public bool SaunaPäällä { get; set; }
         public bool SaunaOFF { get; set; }
+        public Nullable<System.DateTime> SaunaPäälleTime { get; set; }
+        public Nullable<System.DateTime> SaunaOFFTime { get; set; }
     }
 }

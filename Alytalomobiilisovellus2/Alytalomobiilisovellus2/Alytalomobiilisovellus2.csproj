@@ -160,9 +160,6 @@
     <Compile Include="Models\Lampotila.cs">
       <DependentUpon>AlyTalo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Sauna.cs">
-      <DependentUpon>AlyTalo.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\ValaistusController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -181,6 +178,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AlyTalo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sauna.cs">
+      <DependentUpon>AlyTalo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Valo.cs">
       <DependentUpon>AlyTalo.tt</DependentUpon>

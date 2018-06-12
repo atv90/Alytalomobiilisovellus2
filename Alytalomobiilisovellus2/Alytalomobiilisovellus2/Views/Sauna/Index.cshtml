@@ -26,6 +26,12 @@
         <th>
             @Html.DisplayNameFor(model => model.SaunaOFF)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaunaPäälleTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaunaOFFTime)
+        </th>
         <th></th>
     </tr>
 
@@ -45,6 +51,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SaunaOFF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaunaPäälleTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaunaOFFTime)
         </td>
         <td>
             @Html.ActionLink("ON", "SaunaON", new { id = item.SaunaID }) |
