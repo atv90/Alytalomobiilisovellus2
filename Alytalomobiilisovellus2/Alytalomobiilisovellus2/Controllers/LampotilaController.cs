@@ -122,6 +122,7 @@ namespace Alytalomobiilisovellus2.Controllers
             la.TavoiteLampotila = model.TavoiteLampotila;
             la.LämmitysON = true;
             la.LämmitysOFF = false;
+            la.LämmitysONTime = DateTime.Now;
 
             db.SaveChanges();
             return RedirectToAction("Index");
