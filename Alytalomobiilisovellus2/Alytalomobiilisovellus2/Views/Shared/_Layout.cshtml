@@ -8,27 +8,24 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#b80454;">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <nav class="navbar navbar-expand-lg" style="background-color:#b80454;">            
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Älytalo", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+            
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav mr-auto">
                     <li>@Html.ActionLink("Etusivu", "Index", "Home")</li>
                     <li>@Html.ActionLink("Valaistus", "Index", "Valo")</li>
                     <li>@Html.ActionLink("Sauna", "Index", "Sauna")</li>
                     <li>@Html.ActionLink("Lämpötila", "Index", "Lampotila")</li>
                 </ul>
             </div>
-        </div>
-    </div>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
